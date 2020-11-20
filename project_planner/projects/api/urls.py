@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import ProjectCreateAPIView,ProjectDestroyAPIView,ProjectRetrieveAPIView,ProjectListAPIView,ProjectUpdateAPIView
+from .views import ProjectCreateAPIView,ProjectDestroyAPIView,ProjectRetrieveAPIView,ProjectListAPIView,ProjectUpdateAPIView,TaskRetrieveAPIView
 
 
 urlpatterns=[
@@ -10,4 +10,6 @@ urlpatterns=[
     path('<int:pk>/delete/',ProjectDestroyAPIView.as_view(),name='project-destroy'),
     path('create/',ProjectCreateAPIView.as_view(),name='project-create'),
     path('<int:pk>/update/',ProjectUpdateAPIView.as_view(),name='project-update'),
+
+     path('<int:project_id>/tasks/<int:pk>/',TaskRetrieveAPIView.as_view(),name='task-detail'),
 ]

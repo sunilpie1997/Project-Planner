@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from projects.models import Project,ProjectAvatar 
+from projects.models import Project,ProjectAvatar,Task
 from django.contrib.auth import get_user_model
 
 User=get_user_model()
@@ -85,3 +85,11 @@ class ProjectUpdateSerializer(serializers.ModelSerializer):
                 raise serializers.ValidationError("you don't have required permission")
         else:
             raise serializers.ValidationError("authentication credentials were not provided")
+
+
+#to view Task
+class TaskSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model=Task
+        fields=["name","start_date","end_date","description"]

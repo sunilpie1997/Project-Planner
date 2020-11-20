@@ -1,5 +1,5 @@
-from projects.models import Project,ProjectAvatar
-from .serializers import ProjectSerializer,ProjectCreateSerializer,ProjectUpdateSerializer
+from projects.models import Project,ProjectAvatar,Task
+from .serializers import ProjectSerializer,ProjectCreateSerializer,ProjectUpdateSerializer,TaskSerializer
 from rest_framework import generics
 from rest_framework.permissions import IsAdminUser,IsAuthenticated,AllowAny
 
@@ -42,3 +42,11 @@ class ProjectUpdateAPIView(generics.UpdateAPIView):
     queryset=Project.objects.all()
     serializer_class=ProjectUpdateSerializer
     permission_classes=[IsAuthenticated]
+
+
+#Retrieve Task
+class TaskRetrieveAPIView(generics.RetrieveAPIView):
+    
+    queryset=Task.objects.all()
+    serializer_class=TaskSerializer
+    permission_classes=[AllowAny]

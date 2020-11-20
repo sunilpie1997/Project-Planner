@@ -14,3 +14,4 @@ project_planner/projects/api/__pycache__
 project_planner/tasks/__pycache__
 project_planner/tasks/migrations/__pycache__
 project_planner/tasks/migrations/0001_initial.py
+project_planner/projects/migrations/0002_task.py
