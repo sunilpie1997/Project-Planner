@@ -5,12 +5,12 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import homePage
+from .views import HomePageView
 
 
 urlpatterns = [
 
-    path('',homePage,name="homepage"),
+    path('',HomePageView.as_view(),name="homepage"),
 
     #this view is for changing passwords,viewing details,profile directly on this server
     path('accounts/',include("accounts.urls")),

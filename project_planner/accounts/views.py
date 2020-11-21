@@ -4,11 +4,16 @@ from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth.forms import SetPasswordForm
 from django.views.generic.edit import CreateView
 from django.conf import settings
+from django.views.generic import TemplateView
 from .models import User
 
-
-def profileView(request):
+"""
+def ProfileView(request):
     return render(request,"profile.html")
+"""
+
+class ProfileView(TemplateView):
+    template_name = "profile.html"
 
 
 """
