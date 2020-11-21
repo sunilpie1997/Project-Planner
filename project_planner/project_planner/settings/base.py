@@ -74,6 +74,12 @@ WSGI_APPLICATION = 'project_planner.wsgi.application'
 #using custom user model instead of django default
 AUTH_USER_MODEL="accounts.User"
 
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+LOGIN_REDIRECT_URL = 'profile'
+
+
+
 #for google oauth2...
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.google.GoogleOAuth2',
