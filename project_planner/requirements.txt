@@ -15,3 +15,4 @@ django-filter
 djangorestframework-jwt
 django-cors-headers
 pillow
+social-auth-app-django

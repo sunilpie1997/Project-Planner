@@ -5,8 +5,20 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
+from .views import homePage
+
 
 urlpatterns = [
+
+    path('',homePage,name="homepage"),
+
+    #this view is for changing passwords,viewing details,profile directly on this server
+    path('accounts/',include("accounts.urls")),
+
+    #this is for oauth 2.0 using google
+    path('oauth/', include('social_django.urls', namespace='social')),
+
+
     path('admin/', admin.site.urls),
 
     #to get json web token on successfull login
