@@ -15,6 +15,9 @@ urlpatterns = [
     #this view is for changing passwords,viewing details,profile directly on this server
     path('accounts/',include("accounts.urls")),
 
+    #to retrieve user details through api
+    path('user/',include('accounts.api.urls')),
+
     #this is for oauth 2.0 using google
     path('oauth/', include('social_django.urls', namespace='social')),
 
