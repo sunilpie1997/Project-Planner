@@ -14,7 +14,7 @@ SECRET_KEY = '^*y8cki98_xa%jf_kwbb1r+wxako74xpdlwp&1!^3k2=@%ybz4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost','127.0.0.1','project-planner-ufaber.herokuapp.com']
 
 #instead add 'CORS_ORIGIN_WHITELIST'
 CORS_ORIGIN_ALLOW_ALL=True
@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'accounts',
     'projects',
     'social_django',#for google oauth authentication
+    'whitenoise.runserver_nostatic',
 ]
 
 MIDDLEWARE = [
@@ -41,6 +42,7 @@ MIDDLEWARE = [
     #frontend is written in angular.Requests would originate from different origin
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
