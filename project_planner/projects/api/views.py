@@ -5,6 +5,50 @@ from rest_framework.permissions import IsAdminUser,IsAuthenticated,AllowAny
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.parsers import MultiPartParser,FormParser
+
+
+#upload project avatar image
+class ProjectAvatarUploadView(APIView):
+    parser_classes=(MultiPartParser,FormParser)
+    permission_classes=[IsAuthenticated]
+
+    
+    def post(self,request,project_id,filename,format=None):
+        
+        if 'file' not in request.data:
+            
+            return Response({"detail":"no image received"},status=status.HTTP_400_BAD_REQUEST)
+        
+        projectImage=request.data['file']
+
+        if(projectImage.size>50000):
+        
+            return Response({"detail":"max file size supported is 50 kb"},status=status.HTTP_400_BAD_REQUEST)
+        
+        if(len(projectImage.name)>50):
+        
+            return Response({"detail":"file name too long. Max length is 50 chars"})
+        
+        project_exist=ProjectAvatar.objects.filter(pk=self.kwargs.get('project_id')).exists()
+
+        if project_exist:
+            project=Project.objects.get(pk=project_id)
+            
+            if project.manager==request.user:
+                project_avatar=ProjectAvatar.objects.get(pk=project_id)
+                project_avatar.image=projectImage
+                project_avatar.save(force_update=True)
+                image_url = project_avatar.image.url
+        
+                return Response({"image_url":image_url},status=status.HTTP_202_ACCEPTED)
+
+            else:
+                return Response({"detail":"you don't have permission"},status=status.HTTP_401_UNAUTHORIZED)
+
+        else:
+            #'ProjectAvatar' object get created on creation of 'project'. So...
+            return Response({"detail":"project with given id does not exist"},status=status.HTTP_404_NOT_FOUND)        
 
 
 #Retrieve Project

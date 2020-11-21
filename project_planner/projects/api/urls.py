@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import ProjectCreateAPIView,ProjectDeleteAPIView,ProjectRetrieveAPIView,ProjectListAPIView,ProjectUpdateAPIView,TaskRetrieveAPIView,TaskCreateAPIView,TaskUpdateAPIView,TaskListAPIView,TaskDeleteAPIView
+from .views import ProjectAvatarUploadView,ProjectCreateAPIView,ProjectDeleteAPIView,ProjectRetrieveAPIView,ProjectListAPIView,ProjectUpdateAPIView,TaskRetrieveAPIView,TaskCreateAPIView,TaskUpdateAPIView,TaskListAPIView,TaskDeleteAPIView
 
 
 urlpatterns=[
@@ -10,6 +10,9 @@ urlpatterns=[
     path('<int:project_id>/delete/',ProjectDeleteAPIView.as_view(),name='project-delete'),
     path('create/',ProjectCreateAPIView.as_view(),name='project-create'),
     path('<int:pk>/update/',ProjectUpdateAPIView.as_view(),name='project-update'),
+
+    #url to upload project avatar (after 'project' has been created)
+    path('<int:project_id>/image/<str:filename>/',ProjectAvatarUploadView.as_view(),name='project-avatar-upload'),
 
     #urls to perform CRUD operations on 'Task' Model
     path('<int:project_id>/tasks/',TaskListAPIView.as_view(),name='task-list'),
