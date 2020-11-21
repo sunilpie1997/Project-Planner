@@ -11,7 +11,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model=User
-        fields=["username","first_name","last_name"]
+        fields=["username","first_name","last_name","email"]
 
 
 #to view project details
@@ -20,7 +20,7 @@ class ProjectSerializer(serializers.ModelSerializer):
     manager=UserSerializer()
     class Meta:
         model=Project
-        fields=['name',"manager",'start_date','end_date','description']
+        fields=['id','name',"manager",'start_date','end_date','description']
 
 
 #to create new Project
