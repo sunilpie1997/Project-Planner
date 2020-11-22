@@ -256,10 +256,28 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-#to run locally,use below settings,including MEDIA_ROOT and MEDIA_URL
 STATIC_URL = '/static/'
 STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
-MEDIA_URL='/media/'
-MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
+#to run locally,use below settings,including MEDIA_ROOT and MEDIA_URL
+USE_S3=True
+
+if USE_S3:
+
+    AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_KEY')
+    AWS_STORAGE_BUCKET_NAME = os.getenv('S3_BUCKET')
+
+    AWS_DEFAULT_ACL = None
+
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+    AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
+    
+    PUBLIC_MEDIA_LOCATION = 'media'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
+    DEFAULT_FILE_STORAGE = 'project_planner.storage_backends.MediaStorage'
+
+else:
+    MEDIA_URL='/media/'
+    MEDIA_ROOT=os.path.join(BASE_DIR,'media')
