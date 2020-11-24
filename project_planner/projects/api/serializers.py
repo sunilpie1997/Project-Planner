@@ -94,7 +94,7 @@ class TaskSerializer(serializers.ModelSerializer):
     assignee=UserSerializer()
     class Meta:
         model=Task
-        fields=["name","start_date","end_date","description","assignee"]
+        fields=["id","name","start_date","end_date","description","status","assignee"]
 
 
 #to create task

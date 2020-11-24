@@ -173,19 +173,21 @@ class TaskDeleteAPIView(APIView):
     def delete(self,request,project_id,task_id,format=None):
 
         project_id=self.kwargs['project_id']
-        
+        task_id=self.kwargs['task_id']
+
         if isinstance(project_id,int) and isinstance(task_id,int):
 
             project_exists=Project.objects.filter(pk=project_id).exists()
-            task_id=Task.objects.filter(pk=task_id).exists()
+            task_exists=Task.objects.filter(pk=task_id).exists()
             
-            if project_exists and task_id:
+            if project_exists and task_exists:
                 project=Project.objects.get(pk=project_id)
                 task=Task.objects.get(pk=task_id)
 
                 if task.project==project:
                 
                     if request.user==project.manager:
+                        print("came till there")
                         task.delete()
                         return Response(status=status.HTTP_200_OK)
 

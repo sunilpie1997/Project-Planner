@@ -162,9 +162,9 @@ REST_FRAMEWORK = {
 
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
 
-    'PAGE_SIZE': 10,
+    'PAGE_SIZE': 5,
 
-    #'EXCEPTION_HANDLER':('accounts.api.exceptions.base_exception_handler'),
+    'EXCEPTION_HANDLER':('projects.api.exceptions.base_exception_handler'),
 
     'DEFAULT_THROTTLE_CLASSES': [
         'rest_framework.throttling.AnonRateThrottle',
@@ -172,8 +172,8 @@ REST_FRAMEWORK = {
     ],
 
     'DEFAULT_THROTTLE_RATES': {
-        'anon': '20/hour',
-        'user': '50/hour'
+        'anon': '50/hour',
+        'user': '100/hour'
     }
 
 
