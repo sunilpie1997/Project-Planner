@@ -261,7 +261,7 @@ STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 #to run locally,use below settings,including MEDIA_ROOT and MEDIA_URL
-USE_S3=True
+USE_S3=False
 
 if USE_S3:
 

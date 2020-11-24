@@ -1,5 +1,5 @@
 from projects.models import Project,ProjectAvatar,Task
-from .serializers import ProjectSerializer,ProjectCreateSerializer,ProjectUpdateSerializer,TaskSerializer,TaskUpdateSerializer,TaskCreateSerializer
+from .serializers import ProjectAvatarSerializer,ProjectSerializer,ProjectCreateSerializer,ProjectUpdateSerializer,TaskSerializer,TaskUpdateSerializer,TaskCreateSerializer
 from rest_framework import generics
 from rest_framework.permissions import IsAdminUser,IsAuthenticated,AllowAny
 from rest_framework.views import APIView
@@ -7,6 +7,14 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.parsers import MultiPartParser,FormParser
 
+
+#to view project avatar
+class ProjectAvatarView(generics.RetrieveAPIView):
+    
+    queryset=ProjectAvatar.objects.all()
+    serializer_class=ProjectAvatarSerializer
+    permission_classes=[AllowAny]
+    
 
 #upload project avatar image
 class ProjectAvatarUploadView(APIView):

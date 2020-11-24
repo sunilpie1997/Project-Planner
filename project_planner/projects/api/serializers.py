@@ -14,6 +14,15 @@ class UserSerializer(serializers.ModelSerializer):
         fields=["username","first_name","last_name","email"]
 
 
+#to show project avatar
+class ProjectAvatarSerializer(serializers.ModelSerializer):
+
+    class Meta:
+
+        model=ProjectAvatar
+        fields=['image']
+
+
 #to view project details
 class ProjectSerializer(serializers.ModelSerializer):
     

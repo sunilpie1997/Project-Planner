@@ -18,3 +18,5 @@ project_planner/projects/migrations/0002_task.py
 project_planner/accounts/migrations/0002_auto_20201121_1208.py
 project_planner/project_planner/settings/google_conf.py
 project_planner/accounts/api/__pycache__
+project_planner/project_planner/media/nobita_a3rf68E.jpg
+project_planner/project_planner/media/bungalow.jpg
