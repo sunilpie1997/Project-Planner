@@ -16,9 +16,10 @@ Features:
 
 #### written in Django rest framework ####
 
-User can login
-Users can view projects and task in each projects
-Authenticated users can ceate new project and tasks (in each of them). Only They can also update and delete them.
-Project avatars (images) are uploaded to amazon aws.
-Project List and Task List can be viewed by pages (pagination).
-Each task can be assigned to a registered user on the website (if he exists).
+1. User can generate access token on succesfull login.
+2. Users are identified by server using these tokens.
+3. Users can view projects and task in each projects.
+4. Authenticated users can ceate new project and tasks (in each of them). (Only) They can also update and delete them.
+5. Project avatars (images) are uploaded to amazon aws.
+6. Project List and Task List can be viewed by pages (pagination).
+7. Each task can be assigned to a registered user on the website (if he exists).
